@@ -1,0 +1,27 @@
+name: Jellyfin Addon
+version: "1.0"
+slug: jellyfin
+description: "Jellyfin addon for Home Assistant OS"
+arch:
+  - aarch64
+  - armv7
+  - amd64
+url: https://github.com/LogicAnalysis/jellyfin-haos-addon
+startup: application
+webui: http://[HOST]:[PORT:8096]
+ports:
+  "8096/tcp": 8096
+  "8920/tcp": 8920
+ports_description:
+  "8096/tcp": "HTTP web interface"
+  "8920/tcp": "HTTPS web interface"
+map:
+  - media:rw
+  - addon_config:rw
+schema:
+  media_folder: str
+image: linuxserver/jellyfin
+options:
+  media_folder: /media
+init: false
+video: true
